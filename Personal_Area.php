@@ -1,5 +1,8 @@
 <?php
     session_start();
+    if(!$_SESSION['user']){
+        header('Location: ../index.php ');
+    }
 ?>
 <!doctype html>
 <html lang="en">
@@ -13,6 +16,10 @@
     <title>Document</title>
 </head>
 <body>
+ <div>
+     <h1><?= $_SESSION['user']['full_name'] ?></h1>
+     <h1><?= $_SESSION['user']['email'] ?></h1>
+ </div>
 <form action="core/exit.php" method="post">
     <button type="submit">Выйти из учётной записи?</button>
 </form>
