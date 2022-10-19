@@ -5,10 +5,10 @@
 }
 
 body{
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /*height: 100vh;*/
+    /*    display: flex;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
     font-family: Montserrat , sans-serif; font-size: 18px;
 }
 
@@ -66,6 +66,13 @@ button{
     margin: 5px 0;
     text-decoration: none;
 }
+.ae{
+    color: #01215e;
+    font-size: larger;
+    margin: 10px 0;
+    text-decoration: none;
+    position: center;
+}
 .me{
     /*border: 2px solid #bb0000;*/
     /*border-radius: 3px;*/
@@ -96,6 +103,40 @@ html {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+}
+.fon{
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header{
+    height: 100px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0 100px;
+}
+.open_cabinet{
+    margin-left: auto;
+}
+.cab1{
+    text-decoration: none;
+    color: #060906;
+    font-weight: bold;
+}
+.cab2{
+    margin-left: 20px;
+    border: 2px solid #060906;
+    background: #e3e3e3;
+    border-radius:10px;
+    text-decoration: none;
+    color: #060906;
+    font-weight: bold;
+}
+.logo{
+    margin: 30px ;
 }
 
 
