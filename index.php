@@ -56,5 +56,9 @@
         </div>
     </form>
 </div>
+<footer>
+    <div id="clock"></div>
+    <script src="js/time.js"></script>
+</footer>
 </body>
 </html>
