@@ -30,6 +30,7 @@
         ?>
     </header>
 <div class="fon">
+    <form action="upload_image"></form>
 
 </div>
     <footer>

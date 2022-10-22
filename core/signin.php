@@ -13,7 +13,8 @@
         $_SESSION['user'] =[
             "id" => $user['id'],
             "full_name" => $user['full_name'],
-            "email" => $user['email']
+            "email" => $user['email'],
+            "file" => $user['file']
         ];
         header('Location: ../Personal_Area.php ');
     } else {
