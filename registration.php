@@ -13,7 +13,7 @@
     <title>Регистрация</title>
 </head>
 <body>
-<div class="regist"><h1 style =margin-top:20px  ">Регистрация</h1></div>
+<div class="regist"><h1 style = margin-top:20px  ">Регистрация</h1></div>
 <div class="fon">
     <form action="core/signup.php" method="post">
         <label>ФИО</label>

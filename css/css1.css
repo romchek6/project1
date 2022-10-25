@@ -94,6 +94,7 @@ button{
     font-weight: bold;
     font-size: large;
     margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 html {
@@ -165,6 +166,9 @@ footer{
     border-radius: 100px;
     border: 5px #ccc solid;
     box-shadow: 0 0 10px #444;
+}
+.avatar{
+   margin-left: 20px;
 }
 
 
