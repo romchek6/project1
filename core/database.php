@@ -61,13 +61,16 @@
         $count = $check->num_rows;
         if($count > 0){
             $user = $check->fetch_assoc();
-            $_SESSION['user'] =[
-                "id" => $user['id'],
-                "full_name" => $user['full_name'],
-                "email" => $user['email'],
-                "file" => $user['file']
-            ];
-
+//            $_COOKIE['user'] =[
+//                "id" => $user['id'],
+//                "full_name" => $user['full_name'],
+//                "email" => $user['email'],
+//                "file" => $user['file']
+//            ];
+            setcookie('id',$user['id'],0 ,'/');
+            setcookie('full_name',$user['full_name'],0 ,'/');
+            setcookie('email',$user['email'],0 ,'/');
+            setcookie('file',$user['file'],0 ,'/');
 
             header('Location: ../Personal_Area.php ');
         } else {
@@ -88,5 +91,16 @@
             $connect ->query("UPDATE `user` SET `file` = '$path' WHERE `id` = '$id'");
             $_SESSION['error'] = 'картинка загружена';
             header('Location: ../Personal_Area.php');
+        }
+    }
+    function check_avatar()
+    {
+        global $connect;
+        $id = $_SESSION['user']['id'];
+        $check = $connect->query("SELECT `file` FROM `user` WHERE `id` = '$id' ");
+        $count = $check->num_rows;
+        if ($count > 0) {
+            $user = $check->fetch_assoc();
+            $_SESSION['user']['file'] = $user['file'];
         }
     }

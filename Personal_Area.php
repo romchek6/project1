@@ -1,8 +1,10 @@
 <?php
     session_start();
-    if(!$_SESSION['user']['id']){
+    require 'core/database.php';
+    if(!$_COOKIE['id']){
         header('Location: ../Main_page.php');
     }
+    check_avatar();
 ?>
 <!doctype html>
 <html lang="en">
@@ -26,13 +28,21 @@
             <h1>Котики наше всё</h1>
         </div>
         <div class="open_cabinet">
-            <p><?= $_SESSION['user']['email']?></p>
+            <div class="dropdown">
+                <p class="dropbtn">Меню</p>
+                <div class="dropdown-content">
+                    <a href="#">Ссылка 1</a>
+                    <a href="#">Ссылка 2</a>
+                    <a href="#">Ссылка 3</a>
+                </div>
+            </div>
+            <p  ><?= $_COOKIE['email']?></p>
             <a href="core/exit.php" class="cab1" >Выйти из учётной записи</a>
         </div>
     </header>
     <div class="fon">
         <form action="core/download_image.php" method="post" enctype="multipart/form-data">
-                <img class="img1" src="<?= $_SESSION['user']['file'] ?>" width="150" height="150"  alt="avatar">
+            <img class="img1" src="<?= $_COOKIE['file'] ?>" width="150" height="150" alt="avatar">
             <label>Фото профиля</label>
             <input type="file" name="file" placeholder="Загрузите картинку">
             <button type="submit" >Загрузить</button>

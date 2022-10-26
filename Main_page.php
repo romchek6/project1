@@ -1,5 +1,6 @@
 <?php
     session_start();
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -23,10 +24,12 @@
         </div>
         <?php
 
-        if($_SESSION['user'] ){
-            echo '<div class="open_cabinet"> <a href="core/exit.php" class="cab1">Выйти</a> <a href="Personal_Area.php" class="cab2">Личный кабинет</a> </div> ';
-        }else{
-            echo '<div class="open_cabinet"> <a href="index.php" class="cab1">Вход</a> <a href="registration.php" class="cab2">Регистрация</a> </div> ';
+        if($_COOKIE['id']){?>
+             <div class="open_cabinet"> <a href="core/exit.php" class="cab1">Выйти</a> <a class="a1" href="Personal_Area.php"><img class="img1" src="<?= $_COOKIE['file'] ?>" width="75" height="75"  alt="avatar"></a> </div>
+            <?php
+        }else {?>
+            <div class="open_cabinet"> <a href="index.php" class="cab1">Вход</a> <a href="registration.php" class="cab2">Регистрация</a> </div>
+        <?php
         }
         ?>
     </header>
