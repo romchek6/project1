@@ -1,6 +1,7 @@
 <?php
-    unset($_COOKIE['id']);
-    unset($_COOKIE['email']);
-    unset($_COOKIE['full_name']);
-    unset($_COOKIE['file']);
+    session_start();
+    unset($_SESSION['user']['id']);
+    unset($_SESSION['user']['email']);
+    unset($_SESSION['user']['file']);
+    unset($_SESSION['user']['full_name']);
     header('Location: ../Main_page.php');

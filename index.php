@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if($_COOKIE['id']){
+    if($_SESSION['id']){
        header('Location: ../Personal_Area.php ');
     }
 
@@ -27,7 +27,7 @@
         <h1>Котики наше всё</h1>
     </div>
     <?php
-    if($_COOKIE['id']){
+    if($_SESSION['id']){
         echo '<div class="open_cabinet"> <a href="core/exit.php" class="cab1">Выйти</a> <a href="Personal_Area.php" class="cab2">Личный кабинет</a> </div> ';
     }else{
         echo '<div class="open_cabinet"> <a href="index.php" class="cab1">Вход</a> <a href="registration.php" class="cab2">Регистрация</a> </div> ';

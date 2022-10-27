@@ -56,23 +56,18 @@
         global $connect;
         $login = $_POST['login'];
         $password = md5($_POST['password']);
-
         $check = $connect->query("SELECT * FROM `user` WHERE `login` = '$login' AND `password` = '$password' ");
         $count = $check->num_rows;
         if($count > 0){
             $user = $check->fetch_assoc();
-//            $_COOKIE['user'] =[
-//                "id" => $user['id'],
-//                "full_name" => $user['full_name'],
-//                "email" => $user['email'],
-//                "file" => $user['file']
-//            ];
-            setcookie('id',$user['id'],0 ,'/');
-            setcookie('full_name',$user['full_name'],0 ,'/');
-            setcookie('email',$user['email'],0 ,'/');
-            setcookie('file',$user['file'],0 ,'/');
+            $_SESSION['user'] =[
+                "id" => $user['id'],
+                "full_name" => $user['full_name'],
+                "email" => $user['email'],
+                "file" => $user['file']
+            ];
 
-            header('Location: ../Personal_Area.php ');
+           header('Location: ../Personal_Area.php ');
         } else {
             $_SESSION['error'] = 'Проверьте правильность введённых данных';
             header('Location: ../index.php ');
@@ -81,14 +76,12 @@
     function download(){
         global $connect;
         $id = $_SESSION['user']['id'];
-
         $path = 'uploads/' . time() . $_FILES['file']['name'];
-
         if(!move_uploaded_file($_FILES['file']['tmp_name'] , '../'. $path)){
             $_SESSION['error'] = 'ошибка загрузки';
             header('Location: ../Personal_Area.php');
         } else{
-            $connect ->query("UPDATE `user` SET `file` = '$path' WHERE `id` = '$id'");
+            $connect -> query("UPDATE `user` SET `file` = '$path' WHERE `id` = '$id'");
             $_SESSION['error'] = 'картинка загружена';
             header('Location: ../Personal_Area.php');
         }

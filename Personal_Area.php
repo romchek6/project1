@@ -1,7 +1,7 @@
 <?php
     session_start();
     require 'core/database.php';
-    if(!$_COOKIE['id']){
+    if(!$_SESSION['user']['id']){
         header('Location: ../Main_page.php');
     }
     check_avatar();
@@ -36,13 +36,20 @@
                     <a href="#">Ссылка 3</a>
                 </div>
             </div>
-            <p  ><?= $_COOKIE['email']?></p>
+            <p  ><?= $_SESSION['user']['email']?></p>
             <a href="core/exit.php" class="cab1" >Выйти из учётной записи</a>
         </div>
     </header>
     <div class="fon">
         <form action="core/download_image.php" method="post" enctype="multipart/form-data">
-            <img class="img1" src="<?= $_COOKIE['file'] ?>" width="150" height="150" alt="avatar">
+            <?php
+            if(!$_SESSION['user']['file']){?>
+                <img class="img1" src="uploads/вектор-значка-бизнесмена-мужчины-изображение-профиля-аватар-мужской-182095609.jpg" width="150" height="150" alt="avatar">
+            <?php } else{?>
+                <img class="img1" src="<?=$_SESSION['user']['file']?>" width="150" height="150" alt="avatar">
+            <?php
+            }
+            ?>
             <label>Фото профиля</label>
             <input type="file" name="file" placeholder="Загрузите картинку">
             <button type="submit" >Загрузить</button>
