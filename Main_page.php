@@ -19,17 +19,10 @@
            </a>
         </div>
         <div class="Name">
-            <h1>Котики наше всё</h1>
+            <h1>Котики</h1>
         </div>
         <?php
-
-        if($_SESSION['id']){?>
-             <div class="open_cabinet"> <a href="core/exit.php" class="cab1">Выйти</a> <a class="a1" href="Personal_Area.php"><img class="img1" src="<?= $_SESSION['user']['file'] ?>" width="75" height="75"  alt="avatar"></a> </div>
-            <?php
-        }else {?>
-            <div class="open_cabinet"> <a href="index.php" class="cab1">Вход</a> <a href="registration.php" class="cab2">Регистрация</a> </div>
-        <?php
-        }
+        require_once 'Elements/cabinet.php'
         ?>
     </header>
 <div class="fon">

@@ -1,10 +1,10 @@
 <?php
     session_start();
     require 'core/database.php';
-    if(!$_SESSION['user']['id']){
+    if(!$_COOKIE['id']){
         header('Location: ../Main_page.php');
     }
-    check_avatar();
+    check_SESSION();
 ?>
 <!doctype html>
 <html lang="en">
@@ -25,42 +25,14 @@
             </a>
         </div>
         <div class="Name">
-            <h1>Котики наше всё</h1>
+            <h1>Котики</h1>
         </div>
-        <div class="open_cabinet">
-            <div class="dropdown">
-                <p class="dropbtn">Меню</p>
-                <div class="dropdown-content">
-                    <a href="#">Ссылка 1</a>
-                    <a href="#">Ссылка 2</a>
-                    <a href="#">Ссылка 3</a>
-                </div>
-            </div>
-            <p  ><?= $_SESSION['user']['email']?></p>
-            <a href="core/exit.php" class="cab1" >Выйти из учётной записи</a>
-        </div>
+        <?php
+            require_once 'Elements/cabinet.php'
+        ?>
     </header>
     <div class="fon">
-        <form action="core/download_image.php" method="post" enctype="multipart/form-data">
-            <?php
-            if(!$_SESSION['user']['file']){?>
-                <img class="img1" src="uploads/вектор-значка-бизнесмена-мужчины-изображение-профиля-аватар-мужской-182095609.jpg" width="150" height="150" alt="avatar">
-            <?php } else{?>
-                <img class="img1" src="<?=$_SESSION['user']['file']?>" width="150" height="150" alt="avatar">
-            <?php
-            }
-            ?>
-            <label>Фото профиля</label>
-            <input type="file" name="file" placeholder="Загрузите картинку">
-            <button type="submit" >Загрузить</button>
-            <?php
-            if ($_SESSION['error'])
-            {
-                echo '<p class="me">' .$_SESSION['error']. '</p>';
-            }
-            unset($_SESSION['error']);
-            ?>
-        </form>
+
     </div>
     <footer>
         <div id="clock"></div>

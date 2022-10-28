@@ -1,3 +1,4 @@
 <?php
     require 'database.php';
-    download();
+    if($_FILES['file']['name']) download();
+    update();

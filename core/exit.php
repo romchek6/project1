@@ -1,6 +1,6 @@
 <?php
     session_start();
-    unset($_SESSION['user']['id']);
+    setcookie('id',null, time() - 3600,'/');
     unset($_SESSION['user']['email']);
     unset($_SESSION['user']['file']);
     unset($_SESSION['user']['full_name']);

@@ -18,10 +18,17 @@
     <form action="core/signup.php" method="post">
         <label>ФИО</label>
         <input type="text" name="full_name" value="<?= $_SESSION['full_name'] ?>" placeholder="Введите ФИО" >
-        <label>Логин</label>
+        <label style="margin-bottom: 10px">Пол</label>
+        <p style="font-size: 20px ">
+            <input type="radio" name="gender" value="man" > Мужчина
+            <input type="radio" name="gender" value="woman" > Женщина
+        </p>
+        <label style="margin-top: 10px">Возраст</label>
+        <input type="number" name="age" value="<?= $_SESSION['age'] ?>" placeholder="Введите возраст" >
+        <label >Логин</label>
         <input type="text" name="login" value="<?= $_SESSION['login'] ?>" placeholder="Введите логин" >
-        <label>Почта</label>
-        <input type="email" name="email" value="<?= $_SESSION['email'] ?>" placeholder="Введите почту">
+        <label>Почтовый адрес</label>
+        <input type="email" name="email" value="<?= $_SESSION['email'] ?>" placeholder="Введите почтовый адрес">
         <label>Пароль</label>
         <input type="password" name="password" placeholder="Введите пароль">
         <label>Повторите пароль</label>
