@@ -18,21 +18,10 @@
     <title>Личный кибинет</title>
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <a href="Main_page.php">
-                <img src="image/1801287.svg" width="80" height="80">
-            </a>
-        </div>
-        <div class="Name">
-            <h1>Котики</h1>
-        </div>
-        <?php
-            require_once 'Elements/cabinet.php'
-        ?>
-    </header>
+    <?php
+        require 'Elements/header.php';
+    ?>
     <div class="fon">
-
     </div>
     <footer>
         <div id="clock"></div>

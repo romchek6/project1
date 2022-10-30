@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if($_SESSION['id']) header('Location: ../Personal_Area.php ');
+    if($_COOKIE['id']) header('Location: ../Personal_Area.php ');
 ?>
 <!doctype html>
 <html lang="en">
@@ -16,11 +16,13 @@
 <div class="regist"><h1 style = margin-top:20px  ">Регистрация</h1></div>
 <div class="fon">
     <form action="core/signup.php" method="post">
-        <label>ФИО</label>
-        <input type="text" name="full_name" value="<?= $_SESSION['full_name'] ?>" placeholder="Введите ФИО" >
+        <label>Имя</label>
+        <input type="text" name="first_name" value="<?= $_SESSION['first_name']?>" placeholder="Введите имя" >
+        <label>Фамилия</label>
+        <input type="text" name="last_name" value="<?= $_SESSION['last_name']?>" placeholder="Введите фамилию" >
         <label style="margin-bottom: 10px">Пол</label>
         <p style="font-size: 20px ">
-            <input type="radio" name="gender" value="man" > Мужчина
+            <input type="radio" name="gender" value="man"  > Мужчина
             <input type="radio" name="gender" value="woman" > Женщина
         </p>
         <label style="margin-top: 10px">Возраст</label>

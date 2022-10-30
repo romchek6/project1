@@ -8,7 +8,8 @@
 
     function sign_up(){
         global $connect;
-        $full_name = $_POST['full_name'];
+        $first_name = trim($_POST['first_name']);
+        $last_name =trim($_POST['last_name']);
         $login = trim($_POST['login']);
         $email = trim($_POST['email']);
         $password = trim($_POST['password']);
@@ -16,7 +17,8 @@
         $gender = $_POST['gender'];
         $age = trim($_POST['age']);
 
-        $_SESSION['full_name'] = $full_name;
+        $_SESSION['first_name'] = $first_name;
+        $_SESSION['last_name'] = $last_name;
         $_SESSION['login'] = $login;
         $_SESSION['email'] = $email;
         $_SESSION['age'] = $age;
@@ -26,10 +28,13 @@
         $count = $check->num_rows;
         $check1 = $connect->query("SELECT * FROM `user` WHERE `email` = '$email' ");
         $count1 = $check1->num_rows;
-        if(strlen($full_name)< 2) {
-            $_SESSION['error'] = 'Введите ФИО';
+        if(strlen($first_name)< 2) {
+            $_SESSION['error'] = 'Введите Имя';
             redirect();
-        } else if(!$gender){
+        } else if(strlen($last_name) < 2){
+            $_SESSION['error'] = 'Введите Фамилию';
+            redirect();
+        }else if(!$gender){
             $_SESSION['error'] = 'Укажите пол';
             redirect();
         }else if($age > 122){
@@ -49,12 +54,16 @@
             redirect();
         } else if ( $password!=0 && $password === $password_confirm){
             $password = md5($password);
-            $connect->query("INSERT INTO `user` ( `login`, `password`, `email`, `full_name`,`gender`,`age` ) VALUES ( '$login', '$password', '$email', '$full_name' , '$gender','$age')");
+            if($gender == 'man'){
+                    $connect->query("INSERT INTO `user` ( `login`, `password`, `email`, `first_name`,`last_name`,`gender`,`age`,`file` ) VALUES ( '$login', '$password', '$email', '$first_name','$last_name' , '$gender','$age','uploads/man.jpg')");
+            } else  $connect->query("INSERT INTO `user` ( `login`, `password`, `email`, `first_name`,`last_name`,`gender`,`age`,`file` ) VALUES ( '$login', '$password', '$email', '$first_name','$last_name' , '$gender','$age','uploads/woman.jpg')");
+
             $_SESSION['error'] = 'Регистрация прошла успешно!';
-            unset($_SESSION['full_name']);
             unset($_SESSION['login']);
             unset($_SESSION['email']);
             unset($_SESSION['age']);
+            unset($_SESSION['last_name']);
+            unset($_SESSION['first_name']);
             header('Location: ../index.php ');
         } else{
             $_SESSION['error'] = 'Пароли не совпадают';
@@ -73,7 +82,8 @@
             $user = $check->fetch_assoc();
             $_SESSION['user'] =[
 //                "id" => $user['id'],
-                "full_name" => $user['full_name'],
+                "first_name" => $user['first_name'],
+                "last_name" => $user['last_name'],
                 "email" => $user['email'],
                 "file" => $user['file'],
                 "age" => $user['age'],
@@ -110,7 +120,8 @@
             $user = $check->fetch_assoc();
             $_SESSION['user']['file'] = $user['file'];
             $_SESSION['user']['email'] = $user['email'];
-            $_SESSION['user']['full_name'] = $user['full_name'];
+            $_SESSION['user']['first_name'] = $user['first_name'];
+            $_SESSION['user']['last_name'] = $user['last_name'];
             $_SESSION['user']['age'] = $user['age'];
             $_SESSION['user']['gender'] = $user['gender'];
 
@@ -119,15 +130,16 @@
     }
     function update(){
         global $connect;
-        $full_name = $_POST['full_name1'];
+        $first_name = $_POST['first_name1'];
+        $last_name = $_POST['last_name1'];
         $email = trim($_POST['email1']);
         $gender = $_POST['gender1'];
         $age = trim($_POST['age1']);
         $id = $_COOKIE['id'];
         if($gender){
-            $connect->query("UPDATE `user` SET `full_name` = '$full_name' ,`email` = '$email', `gender` = '$gender' , `age` = '$age' WHERE `id` ='$id' ");
+            $connect->query("UPDATE `user` SET `first_name` = '$first_name', `last_name` ='$last_name' ,`email` = '$email', `gender` = '$gender' , `age` = '$age' WHERE `id` ='$id' ");
         } else{
-            $connect->query("UPDATE `user` SET `full_name` = '$full_name' ,`email` = '$email',  `age` = '$age' WHERE `id` ='$id' ");
+            $connect->query("UPDATE `user` SET `first_name` = '$first_name', `last_name` ='$last_name' ,`email` = '$email',  `age` = '$age' WHERE `id` ='$id' ");
         }
         $_SESSION['error'] = 'Данные обновленны';
         header('Location: ../settings.php');

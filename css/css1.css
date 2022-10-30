@@ -16,6 +16,10 @@ h1{
 h2{
     margin-bottom: 20px;
 }
+header{
+    height: 170px;
+    /*background-image: url("../image/525121251221231231321123.jpg");*/
+}
 form{
     display: flex;
     flex-direction: column;
@@ -53,6 +57,43 @@ button{
 .block{
     text-align: center;
     flex-direction: row;
+}
+.menu{
+    flex-grow: 1;
+}
+.menu ul {
+    display: flex;
+    flex-flow: row nowrap;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.header1{
+    height: 100px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 200px;
+
+}
+.header2{
+    height: 70px;
+    padding: 0 200px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+.header2 a{
+    margin-left: 30px;
+    text-decoration: none;
+    color: #060906;
+    border: 2px solid #060906;
+    border-radius: 10px;
+    background-color: #e3e3e3;
+    padding: 5px;
 }
 .ap{
     color: #01215e;
@@ -124,14 +165,6 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-header{
-    height: 100px;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: flex-start;
-    align-items: center;
-    margin: 0 100px;
 }
 .open_cabinet{
     display: flex;

@@ -18,33 +18,12 @@
     <title>Личный кибинет</title>
 </head>
 <body>
-<header>
-    <div class="logo">
-        <a href="Main_page.php">
-            <img src="image/1801287.svg" width="80" height="80">
-        </a>
-    </div>
-    <div class="Name">
-        <h1>Котики</h1>
-    </div>
     <?php
-    require_once 'Elements/cabinet.php'
+         require 'Elements/header.php';
     ?>
-</header>
 <div class="fon1">
     <form action="core/download_image.php" method="post" enctype="multipart/form-data">
-        <?php
-        if(!$_SESSION['user']['file'] && $_SESSION ['user']['gender'] =='man'){?>
-            <img class="img1" src="uploads/вектор-значка-бизнесмена-мужчины-изображение-профиля-аватар-мужской-182095609.jpg" width="250" height="250" alt="avatar">
-        <?php }  else if(!$_SESSION['user']['file'] && $_SESSION ['user']['gender'] =='woman'){?>
-            <img class="img1" src="uploads/иллюстрация-вектора-аватары-женщины-носят-оранжевую-ткани-аватар-176114949.jpg" width="250" height="250" alt="avatar">
-            <?php
-        } else{
-        ?>
             <img class="img1" src="<?=$_SESSION['user']['file']?>" width="250" height="250" alt="avatar">
-        <?php } ?>
-
-<!--        <div class="fon2">-->
             <div class="input__wrapper">
                 <input  type="file" name="file" id="input__file" class="input input__file">
                 <label for="input__file" class="input__file-button">
@@ -52,11 +31,12 @@
                     <span class="input__file-button-text">Выберите изображение</span>
                 </label>
             </div>
-<!--            <button style="margin-left: 20px" class="submit" type="submit" >Загрузить</button>-->
-<!--        </div>-->
+            <script src="js/file_count.js"></script>
         <h2 style="align-self: center">Изменение данных</h2>
-        <label>ФИО</label>
-        <input type="text" name="full_name1" value="<?= $_SESSION['user']['full_name'] ?>" placeholder="Введите ФИО" >
+        <label>Имя</label>
+        <input type="text" name="first_name" value="<?= $_SESSION['user']['first_name'] ?>" placeholder="Введите имя" >
+        <label>Фамилия</label>
+        <input type="text" name="last_name" value="<?= $_SESSION['user']['last_name'] ?>" placeholder="Введите фамилию" >
         <label style="margin-bottom: 10px">Пол</label>
         <p style="font-size: 20px ">
             <input type="radio" name="gender1" value="man" > Мужчина

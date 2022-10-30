@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if($_SESSION['id']){
+    if($_COOKIE['id']){
        header('Location: ../Personal_Area.php ');
     }
 
@@ -17,23 +17,9 @@
     <title>Вход</title>
 </head>
 <body>
-<header>
-    <div class="logo">
-        <a href="#">
-            <img src="image/1801287.svg" width="80" height="80">
-        </a>
-    </div>
-    <div class="Name">
-        <h1>Котики</h1>
-    </div>
-<!--    --><?php
-//    if($_SESSION['id']){
-//        echo '<div class="open_cabinet"> <a href="core/exit.php" class="cab1">Выйти</a> <a href="Personal_Area.php" class="cab2">Личный кабинет</a> </div> ';
-//    }else{
-//        echo '<div class="open_cabinet"> <a href="index.php" class="cab1">Вход</a> <a href="registration.php" class="cab2">Регистрация</a> </div> ';
-//    }
-//    ?>
-</header>
+    <?php
+        require 'Elements/header.php';
+    ?>
 <div class="fon">
     <form action="core/signin.php" method="post">
             <label>Логин</label>
